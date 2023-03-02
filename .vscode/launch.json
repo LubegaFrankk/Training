@@ -18,6 +18,7 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "tenant": "default"
+            
         }
     ]
 }
