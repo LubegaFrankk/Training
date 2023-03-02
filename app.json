@@ -1,0 +1,28 @@
+{
+  "id": "1c33daae-36bf-4e70-92c3-911f59a0c4ad",
+  "name": "Training",
+  "publisher": "LF",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 59999
+    }
+  ],
+  "showMyCode": true,
+   "runtime": "7.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
