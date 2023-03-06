@@ -61,7 +61,8 @@ table 50001 "Student"
         field(8; "User ID"; Code[50])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "User Setup"."User ID" where("E-Mail" = filter(<> ''));
+            TableRelation = "User Setup"."User ID";
+            Editable = false;
             //TableRelation = "User Setup"."User ID" where("E-Mail" = field(Email));
         }
         field(9; "Student Name"; Text[150])
@@ -72,6 +73,16 @@ table 50001 "Student"
         {
             TableRelation = "No. Series";
             Editable = false;
+        }
+        field(11; EntryDate; Date)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(12; "Entry Time"; Time)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false
         }
     }
 
@@ -96,7 +107,9 @@ table 50001 "Student"
 
     trigger OnInsert()
     begin
-
+        "User ID" := UserId;
+        EntryDate := Today;
+        "Entry Time" := Time(CurrentDateTime);
     end;
 
     trigger OnModify()
