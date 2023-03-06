@@ -10,6 +10,16 @@ table 50001 "Student"
         {
             DataClassification = ToBeClassified;
             Caption = 'No.';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                if "No." <> xRec."No." then begin
+                    SalesSetup.Get();
+                    NoSeriesMgmt.TestManual(SalesSetup."Student No.");
+
+                end;
+            end;
 
         }
         field(2; "First Name"; Text[150])
@@ -19,6 +29,12 @@ table 50001 "Student"
         field(3; "Last Name"; Text[150])
         {
             DataClassification = ToBeClassified;
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Student Name" := "First Name" + ' ' + "Last Name";
+            end;
         }
         field(4; Email; Text[50])
         {
@@ -48,6 +64,15 @@ table 50001 "Student"
             TableRelation = "User Setup"."User ID" where("E-Mail" = filter(<> ''));
             //TableRelation = "User Setup"."User ID" where("E-Mail" = field(Email));
         }
+        field(9; "Student Name"; Text[150])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(10; "No. Series"; Code[50])
+        {
+            TableRelation = "No. Series";
+            Editable = false;
+        }
     }
 
     keys
@@ -66,6 +91,8 @@ table 50001 "Student"
     var
         myInt: Integer;
         age: Integer;
+        SalesSetup: Record "Sales & Receivables Setup";
+        NoSeriesMgmt: Codeunit NoSeriesManagement;
 
     trigger OnInsert()
     begin
