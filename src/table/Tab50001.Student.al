@@ -3,6 +3,8 @@ table 50001 "Student"
     DataClassification = ToBeClassified;
     Caption = 'Student';
     // CaptionML = enu = 'Student', DAN = 'ETUDEINT';
+    DataCaptionFields = "No.", "Student Name";
+
 
     fields
     {
@@ -17,7 +19,6 @@ table 50001 "Student"
                 if "No." <> xRec."No." then begin
                     SalesSetup.Get();
                     NoSeriesMgmt.TestManual(SalesSetup."Student No.");
-
                 end;
             end;
 
@@ -82,7 +83,8 @@ table 50001 "Student"
         field(12; "Entry Time"; Time)
         {
             DataClassification = ToBeClassified;
-            Editable = false
+            Editable = false;
+
         }
     }
 
@@ -98,6 +100,10 @@ table 50001 "Student"
 
         }
     }
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", "Student Name") { }
+    }
 
     var
         myInt: Integer;
@@ -109,7 +115,8 @@ table 50001 "Student"
     begin
         "User ID" := UserId;
         EntryDate := Today;
-        "Entry Time" := Time(CurrentDateTime);
+        // "Entry Time" := DT2Time(CurrentDateTime);
+        "Entry Time" := Time;
     end;
 
     trigger OnModify()
@@ -125,6 +132,13 @@ table 50001 "Student"
     trigger OnRename()
     begin
 
+    end;
+
+    procedure TestFunctionnn()
+    var
+        myInt: Integer;
+    begin
+        Message('I have been clicked');
     end;
 
 }

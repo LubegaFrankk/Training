@@ -48,6 +48,7 @@ page 50000 "Student List"
         }
     }
 
+
     actions
     {
         area(Processing)
