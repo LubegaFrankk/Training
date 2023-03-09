@@ -22,8 +22,9 @@ page 50001 "Student Card"
                 field("Last Name"; Rec."Last Name")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Sir name of the student';
                 }
-                field("Student Name"; Rec."First Name")
+                field("Student Name"; Rec."Student Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Full names of the student';

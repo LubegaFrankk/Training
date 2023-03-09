@@ -49,10 +49,10 @@ table 50001 "Student"
             ExtendedDatatype = PhoneNo;
 
         }
-        field(6; Gender; Option)
+        field(6; Gender; Enum Gender)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = ,Male,Female;
+            //OptionMembers = ,Male,Female;
         }
         field(7; DOB; Date)
         {
