@@ -128,7 +128,8 @@ page 50001 "Student Card"
                 Promoted = true;
                 trigger OnAction()
                 begin
-
+                    // studentCU.ProcessStudentMarks();
+                    studentCU.Run();
                 end;
             }
         }
@@ -150,6 +151,7 @@ page 50001 "Student Card"
 
     var
         myInt: Integer;
+        studentCU: Codeunit "Student Code unit";
 
     trigger OnOpenPage()
     var
