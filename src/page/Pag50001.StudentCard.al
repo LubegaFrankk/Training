@@ -14,6 +14,13 @@ page 50001 "Student Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    trigger OnAssistEdit()
+                    var
+                        myInt: Integer;
+                    begin
+                        if rec.AssistEdit(xRec) then CurrPage.Update();
+                    end;
+
                 }
                 field("First Name"; Rec."First Name")
                 {
@@ -157,6 +164,6 @@ page 50001 "Student Card"
     var
         myInt: Integer;
     begin
-        Message('Hello dfgjkl');
+        //Message('Hello dfgjkl');
     end;
 }

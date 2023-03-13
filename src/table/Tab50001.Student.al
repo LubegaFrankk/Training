@@ -12,6 +12,7 @@ table 50001 "Student"
         {
             DataClassification = ToBeClassified;
             Caption = 'No.';
+            Editable = false;
             trigger OnValidate()
             var
                 myInt: Integer;
@@ -117,6 +118,12 @@ table 50001 "Student"
         EntryDate := Today;
         // "Entry Time" := DT2Time(CurrentDateTime);
         "Entry Time" := Time;
+        if "No." = '' then begin
+            SalesSetup.Get();
+            SalesSetup.TestField("Student No.");
+            // NoSeriesMgmt.GetNextNo()
+            NoSeriesMgmt.InitSeries(SalesSetup."Student No.", xRec."No. Series", 0D, "No.", "No. Series");
+        end;
     end;
 
     trigger OnModify()
@@ -139,6 +146,27 @@ table 50001 "Student"
         myInt: Integer;
     begin
         Message('I have been clicked');
+    end;
+
+    local procedure OnAssistEditOnBeforeExit(var stud: Record Student)
+    begin
+    end;
+
+    procedure AssistEdit(OldStud: Record Student): Boolean
+    var
+        Stud: Record Student;
+    begin
+        with Stud do begin
+            Stud := Rec;
+            SalesSetup.Get();
+            SalesSetup.TestField("Student No.");
+            if NoSeriesMgmt.SelectSeries(SalesSetup."Student No.", OldStud."No. Series", "No. Series") then begin
+                NoSeriesMgmt.SetSeries("No.");
+                Rec := Stud;
+                OnAssistEditOnBeforeExit(Stud);
+                exit(true);
+            end;
+        end;
     end;
 
 }
