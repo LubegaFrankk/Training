@@ -53,9 +53,10 @@ page 50000 "Student List"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Import/Export Student")
             {
                 ApplicationArea = All;
+                RunObject = xmlport "Import/Export Student";
 
                 trigger OnAction();
                 begin

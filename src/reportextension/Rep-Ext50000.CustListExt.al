@@ -1,5 +1,6 @@
 reportextension 50000 "CustListExt" extends "Customer - List"
 {
+    RDLCLayout = 'CustListExt.rdl';
     dataset
     {
         add(Customer)
@@ -7,6 +8,10 @@ reportextension 50000 "CustListExt" extends "Customer - List"
             column(Student_No_; "Student No.")
             {
 
+
+            }
+            column(DisplayMessage; DisplayMessage)
+            {
 
             }
         }
@@ -24,6 +29,7 @@ reportextension 50000 "CustListExt" extends "Customer - List"
                 {
 
                 }
+
             }
         }
         // Add changes to the requestpage here
@@ -31,6 +37,7 @@ reportextension 50000 "CustListExt" extends "Customer - List"
 
     var
         Taxable: Boolean;
+        DisplayMessage: Label 'I have Successfully Exteneded This Report';
     // rendering
     // {
     //     layout(LayoutName)
